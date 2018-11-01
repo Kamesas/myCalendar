@@ -6,8 +6,7 @@ import "./styles.css";
 
 class Calendar extends Component {
   state = {
-    month: moment(),
-    selected: moment().startOf("day")
+    month: moment()
   };
 
   previous = () => {
@@ -22,13 +21,6 @@ class Calendar extends Component {
     });
   };
 
-  select(day) {
-    this.setState({
-      selected: day.date,
-      month: day.date.clone()
-    });
-  }
-
   renderWeeks() {
     let weeks = [];
     let done = false;
@@ -36,21 +28,13 @@ class Calendar extends Component {
       .clone()
       .startOf("month")
       .add("w" - 1)
-      .day("Sunday");
+      .day("Monday");
     let count = 0;
     let monthIndex = date.month();
 
-    const { selected, month } = this.state;
-
     while (!done) {
       weeks.push(
-        <Week
-          key={date}
-          date={date.clone()}
-          month={month}
-          select={day => this.select(day)}
-          selected={selected}
-        />
+        <Week key={date} date={date.clone()} month={this.state.month} />
       );
 
       date.add(1, "w");
@@ -63,19 +47,22 @@ class Calendar extends Component {
   }
 
   renderMonthLabel() {
-    const { month } = this.state;
-
-    return <span className="month-label">{month.format("MMMM YYYY")}</span>;
+    return (
+      <span className="monthName">{this.state.month.format("MMMM YYYY")}</span>
+    );
   }
 
   render() {
     return (
       <section className="calendar">
         <header className="header">
-          <div className="month-display row">
-            <i className="arrow fa fa-angle-left" onClick={this.previous} />
+          <div className="month">
+            <i
+              className="monthArrow fa fa-angle-left"
+              onClick={this.previous}
+            />
             {this.renderMonthLabel()}
-            <i className="arrow fa fa-angle-right" onClick={this.next} />
+            <i className="monthArrow fa fa-angle-right" onClick={this.next} />
           </div>
           <DayNames />
         </header>

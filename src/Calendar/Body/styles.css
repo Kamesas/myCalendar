@@ -1,3 +1,44 @@
+/* Month */
+.month {
+  border-bottom: 1px solid #000;
+}
+
+.monthName {
+  padding: 0 10px;
+}
+
+.monthArrow {
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+/* Week */
+
+.week {
+  display: flex;
+  justify-content: space-around;
+}
+
+.day {
+  cursor: pointer;
+  background-color: #aaa;
+  width: 100%;
+  margin: 1px;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.day.today,
+.day:hover {
+  color: red;
+  background-color: #ccc;
+  transition: all 0.5s;
+}
+
+.different-month {
+  background-color: #eee;
+}
+
 /* dayNames */
 .dayNames {
   display: flex;

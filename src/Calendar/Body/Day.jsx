@@ -2,25 +2,15 @@ import React, { Component } from "react";
 
 class Day extends Component {
   render() {
-    const {
-      day,
-      day: { date, isCurrentMonth, isToday, number },
-      select,
-      selected
-    } = this.props;
-
     return (
       <span
-        key={date.toString()}
         className={
           "day" +
-          (isToday ? " today" : "") +
-          (isCurrentMonth ? "" : " different-month") +
-          (date.isSame(selected) ? " selected" : "")
+          (this.props.day.isToday ? " today" : "") +
+          (this.props.day.isCurrentMonth ? "" : " different-month")
         }
-        onClick={() => select(day)}
       >
-        {number}
+        {this.props.day.number}
       </span>
     );
   }
