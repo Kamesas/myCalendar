@@ -1,0 +1,11 @@
+/* dayNames */
+.dayNames {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dayNamesItem {
+  padding: 5px;
+  margin: 5px;
+  border-bottom: 1px solid #eee;
+}
