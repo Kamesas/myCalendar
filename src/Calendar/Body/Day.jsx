@@ -11,6 +11,7 @@ class Day extends Component {
         }
       >
         {this.props.day.number}
+        {this.props.day.name}
       </span>
     );
   }
