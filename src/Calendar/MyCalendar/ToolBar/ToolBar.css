@@ -1,0 +1,47 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toolbar > div {
+  margin-bottom: 5px;
+}
+
+.month-name {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar .today {
+  text-transform: uppercase;
+  background-color: #eee;
+  padding: 1px 3px;
+}
+
+.monthArrow {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.btns-add-refresh button {
+  margin: 0 3px;
+  background-color: blue;
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.search input {
+  height: 25px;
+  width: 220px;
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-top: 2px solid #aaa;
+}
+
+.search i {
+  color: #aaa;
+  margin: 0 5px;
+}
