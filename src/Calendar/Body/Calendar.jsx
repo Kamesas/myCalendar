@@ -32,8 +32,6 @@ class Calendar extends Component {
     let count = 0;
     let monthIndex = date.month();
 
-    console.log();
-
     while (!done) {
       weeks.push(
         <Week key={date} date={date.clone()} month={this.state.month} />

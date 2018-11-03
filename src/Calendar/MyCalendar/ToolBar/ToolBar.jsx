@@ -20,7 +20,7 @@ class ToolBar extends Component {
         </div>
         <div className="btns-add-refresh">
           <button>Add</button>
-          <button>Refresh</button>
+          <button onClick={this.props.refreshCalendar}>Refresh</button>
         </div>
         <div className="search">
           <i className="fa fa-search" />
