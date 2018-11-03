@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ToolBar from "./ToolBar/ToolBar";
-import Day from "./Day/Day";
+import Week from "./Week/Week";
 import moment from "moment";
 
 // import momentRU from "moment/locale/ru";
@@ -21,31 +21,6 @@ class MyCalendar extends Component {
 
   refreshCalendar = () => {
     this.setState({ moment: moment() });
-  };
-
-  renderWeek = () => {
-    const week = [];
-    const startDayInMonth = this.state.moment.day("Monday");
-    //const today = moment().date() === day.date();
-
-    for (let index = 0; index < 7; index++) {
-      week.push(startDayInMonth.clone());
-      startDayInMonth.add(1, "day");
-    }
-
-    console.log(week);
-
-    return week.map((day, i) => {
-      return (
-        <Day
-          key={i}
-          dayName={day.format("ddd")}
-          numDate={day.date()}
-          today={this.isToday(day)}
-          currentMonth={this.currentMonth(day)}
-        />
-      );
-    });
   };
 
   isToday = day => {
@@ -69,7 +44,12 @@ class MyCalendar extends Component {
           prevMonth={this.prevMonth}
           refreshCalendar={this.refreshCalendar}
         />
-        {this.renderWeek()}
+
+        <Week
+          moment={this.state.moment}
+          isToday={this.isToday}
+          currentMonth={this.currentMonth}
+        />
       </div>
     );
   }
