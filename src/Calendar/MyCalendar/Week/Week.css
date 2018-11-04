@@ -1,5 +1,6 @@
 .week-item {
   display: flex;
+
   justify-content: space-around;
   border-left: 2px solid #aaa;
 }

@@ -7,13 +7,18 @@
   color: #aaa;
 }
 
+.firstWeek {
+  display: block;
+  color: #000;
+}
+
 .item-day {
   width: 100%;
   padding-left: 2px;
   padding-bottom: 10%;
-  text-align: center;
+  text-align: left;
   border: 1px solid #aaa;
-  display: flex;
+  /* display: flex; */
 }
 
 .today .numData {

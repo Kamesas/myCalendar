@@ -33,6 +33,10 @@ class MyCalendar extends Component {
     return moment().month() === day.month() ? null : "currentMonth";
   };
 
+  selectedDay = day => {
+    alert(day);
+  };
+
   renderMonth = () => {
     let month = [];
 
@@ -55,6 +59,7 @@ class MyCalendar extends Component {
           moment={propsMonent}
           isToday={this.isToday}
           currentMonth={this.currentMonth}
+          selected={this.selectedDay}
         />
       );
 
@@ -76,7 +81,7 @@ class MyCalendar extends Component {
           prevMonth={this.prevMonth}
           refreshCalendar={this.refreshCalendar}
         />
-        {this.renderMonth()}
+        <div className="month">{this.renderMonth()}</div>
       </div>
     );
   }
