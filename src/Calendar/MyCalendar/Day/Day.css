@@ -1,7 +1,27 @@
 .today {
-  color: red;
+  color: #fff;
+  background-color: #eee;
 }
 
 .currentMonth {
   color: #aaa;
+}
+
+.item-day {
+  width: 100%;
+  padding-left: 2px;
+  padding-bottom: 10%;
+  text-align: center;
+  border: 1px solid #aaa;
+  display: flex;
+}
+
+.today .numData {
+  margin-top: 5px;
+  font-size: 14px;
+  background-color: blue;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  line-height: 1;
 }

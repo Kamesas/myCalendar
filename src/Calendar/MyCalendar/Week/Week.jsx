@@ -15,8 +15,10 @@ const Week = props => {
       {week.map((day, i) => (
         <Day
           key={i}
+          firstWeek={props.firstWeek}
           dayName={day.format("ddd")}
           numDate={day.date()}
+          month={day.format("MMM")}
           today={props.isToday(day)}
           currentMonth={props.currentMonth(day)}
         />

@@ -35,6 +35,7 @@ class MyCalendar extends Component {
 
   renderMonth = () => {
     let month = [];
+
     let propsMonent = this.state.moment.clone().startOf("month");
 
     let m = this.state.moment
@@ -42,22 +43,24 @@ class MyCalendar extends Component {
       .startOf("month")
       .day("Monday");
 
-    let done = false;
+    let stopRenderMonth = false;
     let count = 0;
     let monthIndex = m.month();
 
-    while (!done) {
+    while (!stopRenderMonth) {
       month.push(
         <Week
           key={m}
+          firstWeek={month.length === 0 ? true : false}
           moment={propsMonent}
           isToday={this.isToday}
           currentMonth={this.currentMonth}
         />
       );
+
       m.add(1, "w");
 
-      done = count++ > 2 && monthIndex !== m.month();
+      stopRenderMonth = count++ > 2 && monthIndex !== m.month();
       monthIndex = m.month();
     }
 
