@@ -9,7 +9,8 @@ const Day = ({
   month,
   firstWeek,
   selected,
-  momentForDay
+  momentForDay,
+  notes
 }) => {
   return (
     <div
@@ -19,7 +20,7 @@ const Day = ({
       <span className="firstWeek">{firstWeek ? dayName : null}</span>
       <div className="numData">{numDate}</div>
       {numDate === 1 ? month : null}
-      {console.log(momentForDay)}
+      {notes.map(note => (note.id === momentForDay ? note.title : null))}
     </div>
   );
 };

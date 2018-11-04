@@ -14,8 +14,9 @@ const Week = props => {
     <div className="week-item">
       {week.map((day, i) => (
         <Day
-          key={i}
-          momentForDay={day.format()}
+          key={day.format("DD MM YYYY")}
+          notes={props.notes}
+          momentForDay={day.format("DD MM YYYY")}
           firstWeek={props.firstWeek}
           dayName={day.format("ddd")}
           numDate={day.date()}

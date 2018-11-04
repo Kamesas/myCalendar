@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ToolBar from "./ToolBar/ToolBar";
 import Week from "./Week/Week";
 import moment from "moment";
+import notes from "./notes";
 
 // import momentRU from "moment/locale/ru";
 // momentRU.locale("ru");
@@ -9,7 +10,10 @@ import moment from "moment";
 moment.locale("fr");
 
 class MyCalendar extends Component {
-  state = { moment: moment() };
+  state = {
+    moment: moment(),
+    notes: notes
+  };
 
   nextMonth = () => {
     this.setState({ momentnth: this.state.moment.add(1, "month") });
@@ -55,6 +59,7 @@ class MyCalendar extends Component {
       month.push(
         <Week
           key={m}
+          notes={this.state.notes}
           firstWeek={month.length === 0 ? true : false}
           moment={propsMonent}
           isToday={this.isToday}
