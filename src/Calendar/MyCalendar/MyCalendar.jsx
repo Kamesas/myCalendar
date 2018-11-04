@@ -33,7 +33,36 @@ class MyCalendar extends Component {
     return moment().month() === day.month() ? null : "currentMonth";
   };
 
-  renderMonth = () => {};
+  renderMonth = () => {
+    let month = [];
+    let propsMonent = this.state.moment.clone().startOf("month");
+
+    let m = this.state.moment
+      .clone()
+      .startOf("month")
+      .day("Monday");
+
+    let done = false;
+    let count = 0;
+    let monthIndex = m.month();
+
+    while (!done) {
+      month.push(
+        <Week
+          key={m}
+          moment={propsMonent}
+          isToday={this.isToday}
+          currentMonth={this.currentMonth}
+        />
+      );
+      m.add(1, "w");
+
+      done = count++ > 2 && monthIndex !== m.month();
+      monthIndex = m.month();
+    }
+
+    return month;
+  };
 
   render() {
     return (
@@ -44,12 +73,7 @@ class MyCalendar extends Component {
           prevMonth={this.prevMonth}
           refreshCalendar={this.refreshCalendar}
         />
-
-        <Week
-          moment={this.state.moment}
-          isToday={this.isToday}
-          currentMonth={this.currentMonth}
-        />
+        {this.renderMonth()}
       </div>
     );
   }
