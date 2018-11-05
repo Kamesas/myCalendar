@@ -15,10 +15,8 @@
 .item-day {
   width: 100%;
   padding-left: 2px;
-  padding-bottom: 10%;
   text-align: left;
   border: 1px solid #aaa;
-  /* display: flex; */
 }
 
 .today .numData {
