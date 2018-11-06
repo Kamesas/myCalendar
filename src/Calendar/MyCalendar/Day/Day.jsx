@@ -10,12 +10,16 @@ const Day = ({
   firstWeek,
   selected,
   momentForDay,
-  notes
+  notes,
+  divRef,
+  widthDay
 }) => {
   return (
     <div
+      style={{ height: widthDay }}
       className={`item-day ${today} ${currentMonth} `}
       onClick={() => selected(momentForDay)}
+      ref={divRef}
     >
       <span className="firstWeek">{firstWeek ? dayName : null}</span>
       <div className="numData">{numDate}</div>

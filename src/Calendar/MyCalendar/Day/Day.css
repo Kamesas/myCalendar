@@ -25,6 +25,7 @@
   background-color: blue;
   width: 14px;
   height: 14px;
+  padding-left: 3px;
   border-radius: 50%;
   line-height: 1;
 }

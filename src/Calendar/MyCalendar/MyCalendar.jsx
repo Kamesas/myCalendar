@@ -7,13 +7,21 @@ import notes from "./notes";
 // import momentRU from "moment/locale/ru";
 // momentRU.locale("ru");
 
-moment.locale("fr");
-
 class MyCalendar extends Component {
-  state = {
-    moment: moment(),
-    notes: notes
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      moment: moment(),
+      notes: notes,
+      widthDay: "100%"
+    };
+    this.dayDivRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.setState({ widthDay: this.dayDivRef.current.clientWidth });
+    //console.log(this.divRef.current.clientWidth);
+  }
 
   nextMonth = () => {
     this.setState({ momentnth: this.state.moment.add(1, "month") });
@@ -65,6 +73,8 @@ class MyCalendar extends Component {
           isToday={this.isToday}
           currentMonth={this.currentMonth}
           selected={this.selectedDay}
+          divRef={this.dayDivRef}
+          widthDay={this.state.widthDay}
         />
       );
 

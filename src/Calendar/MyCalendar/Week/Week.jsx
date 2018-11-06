@@ -24,6 +24,8 @@ const Week = props => {
           today={props.isToday(day)}
           currentMonth={props.currentMonth(day)}
           selected={props.selected}
+          divRef={props.divRef}
+          widthDay={props.widthDay}
         />
       ))}
     </div>
