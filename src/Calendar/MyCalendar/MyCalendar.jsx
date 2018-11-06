@@ -19,9 +19,17 @@ class MyCalendar extends Component {
   }
 
   componentDidMount() {
-    this.setState({ widthDay: this.dayDivRef.current.clientWidth });
-    //console.log(this.divRef.current.clientWidth);
+    this.widthHeigth();
+    this.onResize();
   }
+
+  widthHeigth = () => {
+    this.setState({ widthDay: this.dayDivRef.current.clientWidth });
+  };
+
+  onResize = () => {
+    window.addEventListener("resize", this.widthHeigth);
+  };
 
   nextMonth = () => {
     this.setState({ momentnth: this.state.moment.add(1, "month") });
