@@ -3,7 +3,8 @@ import ToolBar from "./ToolBar/ToolBar";
 import Week from "./Week/Week";
 import moment from "moment";
 import notes from "./notes";
-import AddNote from "./AddNotes/AddNote";
+//import AddNote from "./AddNotes/AddNote";
+import Modal from "./Modal/Modal";
 
 // import momentRU from "moment/locale/ru";
 // momentRU.locale("ru");
@@ -19,6 +20,10 @@ class MyCalendar extends Component {
     };
     this.dayDivRef = React.createRef();
   }
+
+  closeModal = () => {
+    this.setState({ addNoteWindow: false });
+  };
 
   componentDidMount() {
     this.widthHeigth();
@@ -102,7 +107,9 @@ class MyCalendar extends Component {
   render() {
     return (
       <div>
-        {this.state.addNoteWindow ? <AddNote /> : null}
+        {this.state.addNoteWindow ? (
+          <Modal closeModal={this.closeModal} />
+        ) : null}
         <ToolBar
           month={this.state.moment.format("MMMM YYYY")}
           nextMonth={this.nextMonth}

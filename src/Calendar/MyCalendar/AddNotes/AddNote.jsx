@@ -6,6 +6,9 @@ class AddNote extends Component {
   render() {
     return (
       <div className="AddNotes">
+        <span className="close" onClick={this.props.closeModal}>
+          <i className="fa fa-times-circle" />
+        </span>
         <input type="text" placeholder="pick date" />
         <input type="text" placeholder="заголовок заметки" />
         <input type="text" placeholder="описание заметки" />
