@@ -18,7 +18,7 @@ const Week = props => {
           notes={props.notes}
           momentForDay={day.format("DD MM YYYY")}
           firstWeek={props.firstWeek}
-          dayName={day.format("ddd")}
+          dayName={day.format("dd")}
           numDate={day.date()}
           month={day.format("MMM")}
           today={props.isToday(day)}

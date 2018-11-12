@@ -1,6 +1,7 @@
 .toolbar {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 5px;
 }
 
 .toolbar > div {
@@ -11,17 +12,19 @@
   flex-grow: 1;
   display: flex;
   align-items: center;
+  color: #aaa;
 }
 
 .toolbar .today {
   text-transform: uppercase;
   background-color: #eee;
-  padding: 1px 3px;
+  padding: 1px 4px;
 }
 
 .monthArrow {
   margin: 0 5px;
   cursor: pointer;
+  color: #aaa;
 }
 
 .btns-add-refresh button {

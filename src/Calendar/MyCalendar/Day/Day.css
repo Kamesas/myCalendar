@@ -1,5 +1,5 @@
 .today {
-  color: #fff;
+  color: #000;
   background-color: #eee;
 }
 
@@ -10,22 +10,33 @@
 .firstWeek {
   display: block;
   color: #000;
+  font-size: 12px;
 }
 
 .item-day {
   width: 100%;
-  padding-left: 2px;
   text-align: left;
   border: 1px solid #aaa;
 }
 
+.numData {
+  font-size: 12px;
+}
 .today .numData {
   margin-top: 5px;
-  font-size: 14px;
   background-color: blue;
-  width: 14px;
-  height: 14px;
-  padding-left: 3px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  line-height: 1;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.noteTitle {
+  margin: 0;
+  font-size: 12px;
+  background: #4a73cd;
+  color: #ffffff;
+  white-space: nowrap;
 }

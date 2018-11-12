@@ -22,9 +22,15 @@ const Day = ({
       ref={divRef}
     >
       <span className="firstWeek">{firstWeek ? dayName : null}</span>
-      <div className="numData">{numDate}</div>
-      {numDate === 1 ? month : null}
-      {notes.map(note => (note.id === momentForDay ? note.title : null))}
+      <div className="numData">
+        {numDate} {numDate === 1 ? month : null}
+      </div>
+
+      {notes.map(note =>
+        note.id === momentForDay ? (
+          <p className="noteTitle">{note.title}</p>
+        ) : null
+      )}
     </div>
   );
 };
