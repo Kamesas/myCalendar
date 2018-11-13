@@ -3,7 +3,7 @@ import ToolBar from "./ToolBar/ToolBar";
 import Week from "./Week/Week";
 import moment from "moment";
 import notes from "./notes";
-//import AddNote from "./AddNotes/AddNote";
+import AddNote from "./AddNotes/AddNote";
 import Modal from "./Modal/Modal";
 
 // import momentRU from "moment/locale/ru";
@@ -66,6 +66,11 @@ class MyCalendar extends Component {
     console.log(this.state.addNoteWindow);
   };
 
+  addNote = () => {
+    this.setState({ addNoteWindow: true });
+    console.log("add note");
+  };
+
   renderMonth = () => {
     let month = [];
 
@@ -105,18 +110,22 @@ class MyCalendar extends Component {
   };
 
   render() {
+    let calendar = <div className="month">{this.renderMonth()}</div>;
     return (
       <div>
         {this.state.addNoteWindow ? (
-          <Modal closeModal={this.closeModal} />
+          <Modal closeModal={this.closeModal}>
+            <AddNote renderMonth={this.renderMonth} calendar={calendar} />
+          </Modal>
         ) : null}
         <ToolBar
           month={this.state.moment.format("MMMM YYYY")}
           nextMonth={this.nextMonth}
           prevMonth={this.prevMonth}
           refreshCalendar={this.refreshCalendar}
+          addNote={this.addNote}
         />
-        <div className="month">{this.renderMonth()}</div>
+        {calendar}
       </div>
     );
   }

@@ -28,7 +28,9 @@ const Day = ({
 
       {notes.map(note =>
         note.id === momentForDay ? (
-          <p className="noteTitle">{note.title}</p>
+          <p key={note.id} className="noteTitle">
+            {note.title}
+          </p>
         ) : null
       )}
     </div>

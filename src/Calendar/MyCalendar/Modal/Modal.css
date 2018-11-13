@@ -1,12 +1,34 @@
-.wrap-modal {
+.modal-overaly {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #eee;
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 999;
-  display: flex;
+  cursor: pointer;
+}
+
+.modal {
+  max-width: 480px;
+  height: min-content;
+  display: block;
   justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  padding: 30px;
+  margin: 4px;
+  margin-left: -240px;
+  background-color: #eee;
+  border: 8px solid #fff;
+  border-radius: 8px;
+}
+
+.close {
+  position: absolute;
+  padding: 10px;
+  cursor: pointer;
+  top: -8px;
+  right: -8px;
 }

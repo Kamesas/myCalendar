@@ -19,7 +19,7 @@ class ToolBar extends Component {
           <div className="toolbar-month">{this.props.month}</div>
         </div>
         <div className="btns-add-refresh">
-          <button>Add</button>
+          <button onClick={this.props.addNote}>Add</button>
           <button onClick={this.props.refreshCalendar}>Refresh</button>
         </div>
         <div className="search">
