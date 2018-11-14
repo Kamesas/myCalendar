@@ -9,3 +9,8 @@
   margin-bottom: 5px;
   padding: 5px;
 }
+
+.modal-calendar .item-day {
+  width: 50px;
+  height: 50px !important;
+}

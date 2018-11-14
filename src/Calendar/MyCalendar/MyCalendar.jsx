@@ -16,7 +16,8 @@ class MyCalendar extends Component {
       moment: moment(),
       notes: notes,
       widthDay: "100%",
-      addNoteWindow: false
+      addNoteWindow: false,
+      selectedDay: ""
     };
     this.dayDivRef = React.createRef();
   }
@@ -61,9 +62,10 @@ class MyCalendar extends Component {
   };
 
   selectedDay = day => {
-    alert(day);
-    this.setState({ addNoteWindow: true });
-    console.log(this.state.addNoteWindow);
+    this.setState({
+      addNoteWindow: true,
+      selectedDay: day
+    });
   };
 
   addNote = () => {
@@ -115,7 +117,14 @@ class MyCalendar extends Component {
       <div>
         {this.state.addNoteWindow ? (
           <Modal closeModal={this.closeModal}>
-            <AddNote renderMonth={this.renderMonth} calendar={calendar} />
+            <AddNote
+              renderMonth={this.renderMonth}
+              calendar={calendar}
+              month={this.state.moment.format("MMMM YYYY")}
+              nextMonth={this.nextMonth}
+              prevMonth={this.prevMonth}
+              selectedDay={this.state.selectedDay}
+            />
           </Modal>
         ) : null}
         <ToolBar
