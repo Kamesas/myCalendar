@@ -15,12 +15,21 @@ class MyCalendar extends Component {
     this.state = {
       moment: moment(),
       notes: notes,
+      testNotes: [],
       widthDay: "100%",
       addNoteWindow: false,
       selectedDay: ""
     };
     this.dayDivRef = React.createRef();
   }
+
+  newNote = newNote => {
+    /*  this.setState({ notes: [...newNote] }); */
+    /*  this.setState({ notes: this.state.note.push[newNote] }); */
+    this.setState({ notes: [newNote, ...this.state.notes] });
+    console.log("testNotes ---", this.state.notes);
+    console.log("newNote --- ", newNote);
+  };
 
   closeModal = () => {
     this.setState({ addNoteWindow: false });
@@ -69,8 +78,10 @@ class MyCalendar extends Component {
   };
 
   addNote = () => {
-    this.setState({ addNoteWindow: true });
-    console.log("add note");
+    this.setState({
+      addNoteWindow: true,
+      selectedDay: ""
+    });
   };
 
   renderMonth = () => {
@@ -124,6 +135,8 @@ class MyCalendar extends Component {
               nextMonth={this.nextMonth}
               prevMonth={this.prevMonth}
               selectedDay={this.state.selectedDay}
+              newNote={this.newNote}
+              closeModal={this.closeModal}
             />
           </Modal>
         ) : null}

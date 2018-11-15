@@ -2,19 +2,39 @@ import React, { Component } from "react";
 import "./AddNotes.css";
 
 class AddNote extends Component {
-  state = { calendar: false };
+  state = {
+    calendar: false,
+    title: ""
+  };
 
   pickDate = e => {
     this.setState({ calendar: true });
     e.target.value = this.props.selectedDay;
   };
 
-  addTitle = () => {
-    this.setState({ calendar: false });
+  addTitle = e => {
+    this.setState({
+      calendar: false,
+      title: e.target.value,
+      descr: ""
+    });
   };
 
-  addDescr = () => {
-    this.setState({ calendar: false });
+  addDescr = e => {
+    this.setState({
+      calendar: false,
+      descr: e.target.value
+    });
+  };
+
+  saveNewNote = () => {
+    const newNote = {
+      id: this.props.selectedDay,
+      title: this.state.title,
+      descr: this.state.descr
+    };
+    this.props.newNote(newNote);
+    this.props.closeModal();
   };
 
   render() {
@@ -24,19 +44,20 @@ class AddNote extends Component {
           type="text"
           placeholder="pick date"
           value={this.props.selectedDay}
+          onChange={this.pickDate}
           onFocus={this.pickDate}
         />
         <input
           type="text"
           placeholder="заголовок заметки"
-          onFocus={this.addTitle}
+          onChange={this.addTitle}
         />
         <input
           type="text"
           placeholder="описание заметки"
-          onFocus={this.addDescr}
+          onChange={this.addDescr}
         />
-        <button>Save</button>
+        <button onClick={this.saveNewNote}>Save</button>
         {this.state.calendar ? (
           <div className="modal-calendar">
             <div className="month-name">
