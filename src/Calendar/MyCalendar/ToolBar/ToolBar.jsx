@@ -3,6 +3,10 @@ import React, { Component } from "react";
 import "./ToolBar.css";
 
 class ToolBar extends Component {
+  search = e => {
+    this.props.getSearchEl(e.target.value);
+  };
+
   render() {
     return (
       <div className="toolbar">
@@ -24,7 +28,11 @@ class ToolBar extends Component {
         </div>
         <div className="search">
           <i className="fa fa-search" />
-          <input type="text" placeholder="Событие, дата или участник" />
+          <input
+            type="text"
+            placeholder="Событие, дата или участник"
+            onChange={this.search}
+          />
         </div>
       </div>
     );

@@ -17,9 +17,25 @@ class MyCalendar extends Component {
       notes: notes,
       widthDay: "100%",
       addNoteWindow: false,
-      selectedDay: ""
+      selectedDay: "",
+      gotSearchEl: "",
+      finded: ""
     };
     this.dayDivRef = React.createRef();
+  }
+
+  getSearchEl = e => {
+    this.setState({ finded: e });
+  };
+
+  search(notes) {
+    if (this.state.finded.length === 0) {
+      return notes;
+    }
+
+    return notes.filter(el => {
+      return el.title.indexOf(this.state.finded) > -1;
+    });
   }
 
   newNote = newNote => {
@@ -37,7 +53,9 @@ class MyCalendar extends Component {
 
     const savedNotes = JSON.parse(localStorage.getItem("notes"));
     if (savedNotes) {
-      this.setState({ notes: savedNotes });
+      this.setState({
+        notes: savedNotes
+      });
     }
   }
 
@@ -51,7 +69,6 @@ class MyCalendar extends Component {
     this.setState({
       notes: this.state.notes.filter(note => note.id !== idNote)
     });
-    console.log(idNote);
   };
 
   closeModal = () => {
@@ -90,7 +107,6 @@ class MyCalendar extends Component {
 
   selectedDay = day => {
     this.setState({
-      /*  addNoteWindow: true, */
       selectedDay: day
     });
   };
@@ -119,8 +135,8 @@ class MyCalendar extends Component {
     while (!stopRenderMonth) {
       month.push(
         <Week
-          key={m}
-          notes={this.state.notes}
+          key={m} //notes={this.state.notes}
+          notes={this.search(this.state.notes)}
           firstWeek={month.length === 0 ? true : false}
           moment={propsMonent}
           isToday={this.isToday}
@@ -142,7 +158,10 @@ class MyCalendar extends Component {
   };
 
   render() {
+    console.log(this.search(this.state.notes));
+
     let calendar = <div className="month">{this.renderMonth()}</div>;
+
     return (
       <div>
         {this.state.addNoteWindow ? (
@@ -165,7 +184,9 @@ class MyCalendar extends Component {
           prevMonth={this.prevMonth}
           refreshCalendar={this.refreshCalendar}
           addNote={this.addNote}
+          getSearchEl={this.getSearchEl}
         />
+
         {calendar}
       </div>
     );
