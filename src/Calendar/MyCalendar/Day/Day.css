@@ -36,12 +36,14 @@
 }
 
 .noteTitle {
-  margin: 0;
   font-size: 12px;
   background: #4a73cd;
   color: #ffffff;
   white-space: nowrap;
-  margin-left: -2px;
-  margin-right: -1px;
+  margin: 1px -1px 1px -2px;
   padding-left: 2px;
+}
+
+.noteTitle:hover {
+  background: #2d5cc2;
 }

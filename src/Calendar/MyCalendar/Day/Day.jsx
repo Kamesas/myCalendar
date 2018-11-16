@@ -12,7 +12,8 @@ const Day = ({
   momentForDay,
   notes,
   divRef,
-  widthDay
+  widthDay,
+  deleteNote
 }) => {
   return (
     <div
@@ -27,9 +28,15 @@ const Day = ({
       </div>
 
       {notes.map(note =>
-        note.id === momentForDay ? (
-          <p key={note.id + note.title} className="noteTitle">
+        note.date === momentForDay ? (
+          <p key={note.id + note.title} id={note.id} className="noteTitle">
             {note.title}
+            <button
+              style={{ float: "right", fontSize: 8 }}
+              onClick={() => deleteNote(note.id)}
+            >
+              x
+            </button>
           </p>
         ) : null
       )}

@@ -29,7 +29,8 @@ class AddNote extends Component {
 
   saveNewNote = () => {
     const newNote = {
-      id: this.props.selectedDay,
+      id: new Date(),
+      date: this.props.selectedDay,
       title: this.state.title,
       descr: this.state.descr
     };

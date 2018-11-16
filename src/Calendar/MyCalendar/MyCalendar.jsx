@@ -15,7 +15,6 @@ class MyCalendar extends Component {
     this.state = {
       moment: moment(),
       notes: notes,
-      testNotes: [],
       widthDay: "100%",
       addNoteWindow: false,
       selectedDay: ""
@@ -47,6 +46,13 @@ class MyCalendar extends Component {
       this.saveToLocalStorage();
     }
   }
+
+  deleteNote = idNote => {
+    this.setState({
+      notes: this.state.notes.filter(note => note.id !== idNote)
+    });
+    console.log(idNote);
+  };
 
   closeModal = () => {
     this.setState({ addNoteWindow: false });
@@ -84,7 +90,7 @@ class MyCalendar extends Component {
 
   selectedDay = day => {
     this.setState({
-      addNoteWindow: true,
+      /*  addNoteWindow: true, */
       selectedDay: day
     });
   };
@@ -122,6 +128,7 @@ class MyCalendar extends Component {
           selected={this.selectedDay}
           divRef={this.dayDivRef}
           widthDay={this.state.widthDay}
+          deleteNote={this.deleteNote}
         />
       );
 
