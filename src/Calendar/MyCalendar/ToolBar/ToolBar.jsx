@@ -34,6 +34,7 @@ class ToolBar extends Component {
             onChange={this.search}
           />
         </div>
+        <hr />
       </div>
     );
   }

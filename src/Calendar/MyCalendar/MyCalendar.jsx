@@ -5,9 +5,10 @@ import moment from "moment";
 import notes from "./notes";
 import AddNote from "./AddNotes/AddNote";
 import Modal from "./Modal/Modal";
+import DatePicker from "./DatePicker/DatePicker";
 
-// import momentRU from "moment/locale/ru";
-// momentRU.locale("ru");
+import "moment/locale/ru";
+moment.locale("ru");
 
 class MyCalendar extends Component {
   constructor(props) {
@@ -126,7 +127,7 @@ class MyCalendar extends Component {
     let m = this.state.moment
       .clone()
       .startOf("month")
-      .day("Monday");
+      .day(1);
 
     let stopRenderMonth = false;
     let count = 0;
@@ -135,7 +136,7 @@ class MyCalendar extends Component {
     while (!stopRenderMonth) {
       month.push(
         <Week
-          key={m} //notes={this.state.notes}
+          key={m}
           notes={this.search(this.state.notes)}
           firstWeek={month.length === 0 ? true : false}
           moment={propsMonent}
@@ -158,12 +159,11 @@ class MyCalendar extends Component {
   };
 
   render() {
-    console.log(this.search(this.state.notes));
-
     let calendar = <div className="month">{this.renderMonth()}</div>;
 
     return (
       <div>
+        <DatePicker />
         {this.state.addNoteWindow ? (
           <Modal closeModal={this.closeModal}>
             <AddNote
