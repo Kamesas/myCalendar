@@ -1,0 +1,90 @@
+.calendar-mini {
+  width: 220px;
+  margin: auto;
+}
+
+.change-month,
+.change-year {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.change-year {
+  justify-content: center;
+}
+
+.change-month > .monthArrow,
+.yearArrow {
+  padding: 5px;
+}
+
+.change-month > .monthArrow:hover,
+.yearArrow:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+.yearArrow {
+  color: #aaa;
+  padding: 0 10px;
+}
+
+.yearArrow:hover {
+  cursor: pointer;
+}
+
+.is-today {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.week {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 5px auto;
+  border: 1px solid #000;
+  border-right: none;
+  box-sizing: content-box;
+}
+
+.week > div {
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+.week :nth-last-child(-n + 7) {
+  border-bottom: none;
+}
+
+.day-calendar-mini {
+  width: calc(100% / 7);
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.35s;
+}
+
+.day-calendar-mini:hover {
+  background-color: #aaa;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.35s;
+}
+
+.day-red {
+  color: red;
+}
+
+.today-calendar-mini {
+  background-color: #eee;
+}
+
+.selected-day-calendar-mini {
+  background-color: green;
+  color: #ffffff;
+}

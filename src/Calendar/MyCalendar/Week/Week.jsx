@@ -4,7 +4,7 @@ import "./Week.css";
 
 const Week = props => {
   const week = [];
-  const startDayInMonth = props.moment.day("Monday");
+  const startDayInMonth = props.moment.day(1);
 
   for (let index = 0; index < 7; index++) {
     week.push(startDayInMonth.clone());

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import "./CalendarMini.css";
 
 class CalendarMini extends Component {
   state = {
-    m: this.props.moment
+    m: this.props.moment,
+    nowDate: this.props.moment.clone(),
+    selectedDate: ""
   };
 
   nextMonth = () => {
@@ -11,6 +14,22 @@ class CalendarMini extends Component {
 
   prevMonth = () => {
     this.setState({ m: this.state.m.subtract(1, "M") });
+  };
+
+  reloadDate = () => {
+    this.setState({ m: this.state.nowDate.clone() });
+  };
+
+  prevYear = () => {
+    this.setState({ m: this.state.m.subtract(1, "Y") });
+  };
+
+  nextYear = () => {
+    this.setState({ m: this.state.m.add(1, "Y") });
+  };
+
+  selectedDate = date => {
+    this.setState({ selectedDate: date });
   };
 
   renderMiniCalendar(m) {
@@ -35,31 +54,64 @@ class CalendarMini extends Component {
       week[week.length - 1].format("DD MM YYYY") !== lastDayOfWeekInNowMonth
     );
 
-    return week;
+    return week.map(day => (
+      <div
+        key={day.format("DD MM YYYY")}
+        onClick={() => this.selectedDate(day.format("DD MM YYYY"))}
+        className={`day-calendar-mini ${
+          this.state.nowDate.format("DD MM YYYY") === day.format("DD MM YYYY")
+            ? "today-calendar-mini"
+            : ""
+        } ${day.format("dd") === "вс" ? "day-red" : ""} ${
+          this.state.selectedDate !== "" &&
+          this.state.selectedDate === day.format("DD MM YYYY")
+            ? "selected-day-calendar-mini"
+            : ""
+        }`}
+      >
+        {day.date()}
+      </div>
+    ));
   }
 
   render() {
+    const dayName = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
     return (
       <div className="calendar-mini">
-        <button onClick={this.prevMonth} className="next-week">
-          prev
-        </button>
-        {this.state.m.format("DD MMMM")}
-        <button onClick={this.nextMonth} className="next-week">
-          next
-        </button>
+        <div className="change-year">
+          <i
+            className="yearArrow fa fa-angle-double-left"
+            onClick={this.prevYear}
+          />
+          <div className="reload-calendar-mini">
+            <i className="yearArrow fa fa-retweet" onClick={this.reloadDate} />
+          </div>
+          <i
+            className="yearArrow fa fa-angle-double-right"
+            onClick={this.nextYear}
+          />
+        </div>
+
+        <div className="change-month">
+          <i className="monthArrow fa fa-angle-left" onClick={this.prevMonth} />
+          <div className="is-today">{this.state.m.format("DD MMM YYYY")}</div>
+          <i
+            className="monthArrow fa fa-angle-right"
+            onClick={this.nextMonth}
+          />
+        </div>
 
         <div className="week">
-          {this.renderMiniCalendar(this.state.m).map((d, i) =>
-            i === 6 || i === 13 || i === 20 || i === 27 || i === 34 ? (
-              <span key={d.format("DD MM YYYY")}>
-                <span>{d.format("DD ")}</span>
-                <br />
-              </span>
-            ) : (
-              <span key={d.format("DD MM YYYY")}>{d.format("DD")}</span>
-            )
-          )}
+          {dayName.map((day, i) => (
+            <div
+              key={day}
+              className={`day-calendar-mini ${i === 6 ? "day-red" : ""}`}
+            >
+              {day}
+            </div>
+          ))}
+          {this.renderMiniCalendar(this.state.m)}
         </div>
       </div>
     );
