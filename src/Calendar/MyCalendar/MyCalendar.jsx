@@ -161,7 +161,7 @@ class MyCalendar extends Component {
     let calendar = <div className="month">{this.renderMonth()}</div>;
 
     return (
-      <div>
+      <div className="calendar">
         {this.state.addNoteWindow ? (
           <Modal closeModal={this.closeModal}>
             <AddNote

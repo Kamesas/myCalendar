@@ -27,7 +27,7 @@
 }
 .today .numData {
   margin-top: 5px;
-  background-color: blue;
+  background-color: #4a73cd;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -64,6 +64,7 @@
   margin-right: 5px;
   position: relative;
   padding-left: 12px;
+  letter-spacing: -1px;
 }
 
 .span-time::before {
@@ -71,7 +72,7 @@
   font-family: fontawesome;
   position: absolute;
   font-size: 8px;
-  color: blue;
+  color: #4a73cd;
   top: 2px;
   left: 0;
 }

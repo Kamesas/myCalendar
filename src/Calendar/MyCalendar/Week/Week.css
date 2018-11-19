@@ -3,3 +3,11 @@
   justify-content: space-around;
   border-left: 4px solid #aaa;
 }
+
+.week-item:last-child .item-day {
+  border-bottom: none;
+}
+
+.week-item .item-day:last-child {
+  border-right: none;
+}
