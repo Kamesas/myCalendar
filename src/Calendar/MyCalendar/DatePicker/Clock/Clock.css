@@ -1,0 +1,25 @@
+.time {
+  display: flex;
+  justify-content: center;
+}
+
+.time > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 18px;
+}
+
+.time > div > .fa {
+  cursor: pointer;
+  padding: 5px;
+  color: #aaa;
+}
+
+.time > div > .fa:hover {
+  color: #000;
+}

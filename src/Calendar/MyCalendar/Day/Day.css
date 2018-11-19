@@ -23,6 +23,7 @@
 
 .numData {
   font-size: 12px;
+  margin-bottom: 5px;
 }
 .today .numData {
   margin-top: 5px;
@@ -42,8 +43,35 @@
   white-space: nowrap;
   margin: 1px -1px 1px -2px;
   padding-left: 2px;
+  list-style-type: none;
+  transition: all 0.25s;
 }
 
 .noteTitle:hover {
-  background: #2d5cc2;
+  cursor: pointer;
+  background-color: #000000;
+  color: #fff;
+  transition: all 0.25s;
+}
+
+.noteTitle-time {
+  background-color: #fff;
+  color: #000;
+}
+
+.span-time {
+  font-size: 12px;
+  margin-right: 5px;
+  position: relative;
+  padding-left: 12px;
+}
+
+.span-time::before {
+  content: "\f111";
+  font-family: fontawesome;
+  position: absolute;
+  font-size: 8px;
+  color: blue;
+  top: 2px;
+  left: 0;
 }

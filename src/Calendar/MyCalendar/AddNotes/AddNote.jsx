@@ -7,7 +7,8 @@ class AddNote extends Component {
     calendar: false,
     title: "",
     descr: "",
-    selectedDay: ""
+    selectedDay: "",
+    selectedTime: ""
   };
 
   showCalendar = () => {
@@ -21,6 +22,12 @@ class AddNote extends Component {
   selectedDay = selected => {
     if (typeof selected === "string") {
       this.setState({ selectedDay: selected });
+    }
+  };
+
+  selectedTime = selected => {
+    if (typeof selected === "string") {
+      this.setState({ selectedTime: selected });
     }
   };
 
@@ -39,11 +46,7 @@ class AddNote extends Component {
   };
 
   resetAddForm = () => {
-    this.setState({
-      title: "",
-      descr: "",
-      selectedDay: ""
-    });
+    this.setState({ title: "", descr: "", selectedDay: "", selectedTime: "" });
     console.log(this.state.title);
   };
 
@@ -51,6 +54,7 @@ class AddNote extends Component {
     const newNote = {
       id: new Date(),
       date: this.state.selectedDay,
+      time: this.state.selectedTime,
       title: this.state.title,
       descr: this.state.descr
     };
@@ -69,7 +73,13 @@ class AddNote extends Component {
             onChange={this.selectedDay}
             onFocus={this.showCalendar}
           />
-          <input type="text" placeholder="выберите время" />
+          <input
+            type="text"
+            placeholder="выберите время"
+            value={this.state.selectedTime}
+            onFocus={this.selectedTime}
+            onChange={this.selectedTime}
+          />
         </div>
 
         <input
@@ -97,7 +107,10 @@ class AddNote extends Component {
         </div>
         {this.state.calendar ? (
           <div className="modal-calendar">
-            <DatePicker selectedDay={this.selectedDay} />
+            <DatePicker
+              selectedDay={this.selectedDay}
+              selectedTime={this.selectedTime}
+            />
           </div>
         ) : null}
       </div>

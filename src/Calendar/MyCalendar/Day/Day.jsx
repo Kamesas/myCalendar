@@ -29,15 +29,27 @@ const Day = ({
 
       {notes.map(note =>
         note.date === momentForDay ? (
-          <p key={note.id + note.title} id={note.id} className="noteTitle">
-            {note.title}
-            <button
+          <li
+            key={note.id + note.title}
+            id={note.id}
+            className={`noteTitle ${note.time ? "noteTitle-time" : ""}`}
+          >
+            {note.time ? (
+              <span>
+                <span className="span-time">{note.time} </span>
+                <span>{note.title}</span>
+              </span>
+            ) : (
+              <span>{note.title}</span>
+            )}
+
+            {/* <button
               style={{ float: "right", fontSize: 8 }}
               onClick={() => deleteNote(note.id)}
             >
               x
-            </button>
-          </p>
+            </button> */}
+          </li>
         ) : null
       )}
     </div>
