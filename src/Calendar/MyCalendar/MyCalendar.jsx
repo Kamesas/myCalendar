@@ -5,7 +5,6 @@ import moment from "moment";
 import notes from "./notes";
 import AddNote from "./AddNotes/AddNote";
 import Modal from "./Modal/Modal";
-import DatePicker from "./DatePicker/DatePicker";
 
 import "moment/locale/ru";
 moment.locale("ru");
@@ -163,7 +162,6 @@ class MyCalendar extends Component {
 
     return (
       <div>
-        <DatePicker />
         {this.state.addNoteWindow ? (
           <Modal closeModal={this.closeModal}>
             <AddNote

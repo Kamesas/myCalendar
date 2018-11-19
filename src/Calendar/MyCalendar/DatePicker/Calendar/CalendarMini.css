@@ -81,7 +81,8 @@
 }
 
 .today-calendar-mini {
-  background-color: #eee;
+  background-color: blue;
+  color: #fff;
 }
 
 .selected-day-calendar-mini {

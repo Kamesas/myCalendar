@@ -1,27 +1,22 @@
 import React, { Component } from "react";
-import DatePicker from "../DatePicker/DatePicker";
 import "./AddNotes.css";
 
 class AddNote extends Component {
   state = {
     calendar: false,
-    title: "",
-    descr: "",
-    selectedDay: ""
+    title: ""
   };
 
-  showCalendar = () => {
+  pickDate = e => {
     this.setState({ calendar: true });
-  };
-
-  selectedDay = selected => {
-    this.setState({ selectedDay: selected });
+    e.target.value = this.props.selectedDay;
   };
 
   addTitle = e => {
     this.setState({
       calendar: false,
-      title: e.target.value
+      title: e.target.value,
+      descr: ""
     });
   };
 
@@ -35,7 +30,7 @@ class AddNote extends Component {
   saveNewNote = () => {
     const newNote = {
       id: new Date(),
-      date: this.state.selectedDay,
+      date: this.props.selectedDay,
       title: this.state.title,
       descr: this.state.descr
     };
@@ -49,9 +44,9 @@ class AddNote extends Component {
         <input
           type="text"
           placeholder="pick date"
-          value={this.state.selectedDay}
-          onChange={this.selectedDay}
-          onFocus={this.showCalendar}
+          value={this.props.selectedDay}
+          onChange={this.pickDate}
+          onFocus={this.pickDate}
         />
         <input
           type="text"
@@ -66,7 +61,19 @@ class AddNote extends Component {
         <button onClick={this.saveNewNote}>Save</button>
         {this.state.calendar ? (
           <div className="modal-calendar">
-            <DatePicker selectedDay={this.selectedDay} />
+            <div className="month-name">
+              <div className="today">Сегодня</div>
+              <i
+                className="monthArrow fa fa-angle-left"
+                onClick={this.props.prevMonth}
+              />
+              <i
+                className="monthArrow fa fa-angle-right"
+                onClick={this.props.nextMonth}
+              />
+              <div className="toolbar-month">{this.props.month}</div>
+            </div>
+            {this.props.calendar}
           </div>
         ) : null}
       </div>

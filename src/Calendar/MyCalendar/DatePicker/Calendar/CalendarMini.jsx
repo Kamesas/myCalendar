@@ -17,7 +17,7 @@ class CalendarMini extends Component {
   };
 
   reloadDate = () => {
-    this.setState({ m: this.state.nowDate.clone() });
+    this.setState({ m: this.state.nowDate.clone(), selectedDate: "" });
   };
 
   prevYear = () => {
@@ -30,6 +30,7 @@ class CalendarMini extends Component {
 
   selectedDate = date => {
     this.setState({ selectedDate: date });
+    this.props.selectedDay(date);
   };
 
   renderMiniCalendar(m) {
@@ -95,7 +96,7 @@ class CalendarMini extends Component {
 
         <div className="change-month">
           <i className="monthArrow fa fa-angle-left" onClick={this.prevMonth} />
-          <div className="is-today">{this.state.m.format("DD MMM YYYY")}</div>
+          <div className="is-today">{this.state.m.format("MMMM YYYY")}</div>
           <i
             className="monthArrow fa fa-angle-right"
             onClick={this.nextMonth}

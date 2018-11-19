@@ -10,7 +10,11 @@ class DatePicker extends Component {
   render() {
     return (
       <div className="date-picker">
-        <CalendarMini className="calendar" moment={this.state.moment} />
+        <CalendarMini
+          className="calendar"
+          moment={this.state.moment}
+          selectedDay={this.props.selectedDay}
+        />
       </div>
     );
   }
