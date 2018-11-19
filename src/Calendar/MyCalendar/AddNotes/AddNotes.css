@@ -5,12 +5,51 @@
   align-items: center;
 }
 
-.AddNotes input {
-  margin-bottom: 5px;
-  padding: 5px;
+.AddNotes input,
+.AddNotes textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 2px 5px;
 }
 
-.modal-calendar .item-day {
-  width: 50px;
-  height: 50px !important;
+.AddNotes input:focus,
+.AddNotes textarea:focus {
+  outline: none;
+}
+
+.inputs-date-time {
+  width: 100%;
+  display: flex;
+}
+
+.inputs-date-time input {
+  margin: 0 5px 8px;
+  text-align: center;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.btns-add-form {
+  display: flex;
+  width: 100%;
+}
+
+.btns-add-form button {
+  width: 100%;
+  margin: 0 3px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btn-save {
+  background-color: green;
+}
+
+.btn-reset {
+  background-color: red;
 }

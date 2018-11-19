@@ -14,8 +14,14 @@ class AddNote extends Component {
     this.setState({ calendar: true });
   };
 
+  hideCalendar = () => {
+    this.setState({ calendar: false });
+  };
+
   selectedDay = selected => {
-    this.setState({ selectedDay: selected });
+    if (typeof selected === "string") {
+      this.setState({ selectedDay: selected });
+    }
   };
 
   addTitle = e => {
@@ -32,6 +38,15 @@ class AddNote extends Component {
     });
   };
 
+  resetAddForm = () => {
+    this.setState({
+      title: "",
+      descr: "",
+      selectedDay: ""
+    });
+    console.log(this.state.title);
+  };
+
   saveNewNote = () => {
     const newNote = {
       id: new Date(),
@@ -46,24 +61,40 @@ class AddNote extends Component {
   render() {
     return (
       <div className="AddNotes">
-        <input
-          type="text"
-          placeholder="pick date"
-          value={this.state.selectedDay}
-          onChange={this.selectedDay}
-          onFocus={this.showCalendar}
-        />
+        <div className="inputs-date-time">
+          <input
+            type="text"
+            placeholder="выберите дату"
+            value={this.state.selectedDay}
+            onChange={this.selectedDay}
+            onFocus={this.showCalendar}
+          />
+          <input type="text" placeholder="выберите время" />
+        </div>
+
         <input
           type="text"
           placeholder="заголовок заметки"
+          value={this.state.title}
+          onFocus={this.hideCalendar}
           onChange={this.addTitle}
         />
-        <input
-          type="text"
+        <textarea
           placeholder="описание заметки"
+          value={this.state.descr}
+          onFocus={this.hideCalendar}
           onChange={this.addDescr}
+          name="text"
+          rows="3"
         />
-        <button onClick={this.saveNewNote}>Save</button>
+        <div className="btns-add-form">
+          <button onClick={this.saveNewNote} className="btn-save">
+            Сохранить
+          </button>
+          <button onClick={this.resetAddForm} className="btn-reset">
+            сбросить
+          </button>
+        </div>
         {this.state.calendar ? (
           <div className="modal-calendar">
             <DatePicker selectedDay={this.selectedDay} />
