@@ -19,7 +19,8 @@ class MyCalendar extends Component {
       addNoteWindow: false,
       selectedDay: "",
       gotSearchEl: "",
-      finded: ""
+      finded: "",
+      timeNow: moment().format("HH : mm")
     };
     this.dayDivRef = React.createRef();
   }
@@ -40,6 +41,11 @@ class MyCalendar extends Component {
 
   newNote = newNote => {
     this.setState({ notes: [newNote, ...this.state.notes] });
+  };
+
+  timeNow = () => {
+    this.setState({ timeNow: moment().format("HH : mm") });
+    return this.state.timeNow;
   };
 
   saveToLocalStorage = () => {
@@ -173,8 +179,9 @@ class MyCalendar extends Component {
               selectedDay={this.state.selectedDay}
               newNote={this.newNote}
               closeModal={this.closeModal}
-              timeNow={this.state.moment.format("HH : mm")}
-              dateNow={this.state.moment.format("DD MM YYYY")}
+              //timeNow={this.state.moment.clone().format("HH : mm")}
+              timeNow={this.timeNow}
+              dateNow={this.state.moment.clone().format("DD MM YYYY")}
             />
           </Modal>
         ) : null}

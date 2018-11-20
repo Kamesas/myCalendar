@@ -23,7 +23,7 @@ const Week = props => {
           month={day.format("MMM")}
           today={props.isToday(day)}
           currentMonth={props.currentMonth(day)}
-          selected={props.selected}
+          //selected={props.selected}
           divRef={props.divRef}
           widthDay={props.widthDay}
           deleteNote={props.deleteNote}

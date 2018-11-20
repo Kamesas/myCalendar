@@ -19,7 +19,7 @@ const Day = ({
     <div
       style={{ height: widthDay }}
       className={`item-day ${today} ${currentMonth} `}
-      onClick={() => selected(momentForDay)}
+      //onClick={() => selected(momentForDay)}
       ref={divRef}
     >
       <span className="firstWeek">{firstWeek ? dayName : null}</span>

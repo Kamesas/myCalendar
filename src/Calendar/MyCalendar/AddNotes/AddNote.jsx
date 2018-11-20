@@ -37,7 +37,7 @@ class AddNote extends Component {
   };
 
   timeNow = () => {
-    this.setState({ selectedTime: this.props.timeNow });
+    this.setState({ selectedTime: this.props.timeNow() });
     this.showCalendar();
   };
 
