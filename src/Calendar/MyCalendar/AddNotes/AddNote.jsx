@@ -31,6 +31,16 @@ class AddNote extends Component {
     }
   };
 
+  dateNow = () => {
+    this.setState({ selectedDay: this.props.dateNow });
+    this.showCalendar();
+  };
+
+  timeNow = () => {
+    this.setState({ selectedTime: this.props.timeNow });
+    this.showCalendar();
+  };
+
   addTitle = e => {
     this.setState({
       calendar: false,
@@ -47,7 +57,6 @@ class AddNote extends Component {
 
   resetAddForm = () => {
     this.setState({ title: "", descr: "", selectedDay: "", selectedTime: "" });
-    console.log(this.state.title);
   };
 
   saveNewNote = () => {
@@ -71,13 +80,13 @@ class AddNote extends Component {
             placeholder="выберите дату"
             value={this.state.selectedDay}
             onChange={this.selectedDay}
-            onFocus={this.showCalendar}
+            onFocus={this.dateNow}
           />
           <input
             type="text"
             placeholder="выберите время"
             value={this.state.selectedTime}
-            onFocus={this.selectedTime}
+            onFocus={this.timeNow}
             onChange={this.selectedTime}
           />
         </div>

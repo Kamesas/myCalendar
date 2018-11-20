@@ -173,6 +173,8 @@ class MyCalendar extends Component {
               selectedDay={this.state.selectedDay}
               newNote={this.newNote}
               closeModal={this.closeModal}
+              timeNow={this.state.moment.format("HH : mm")}
+              dateNow={this.state.moment.format("DD MM YYYY")}
             />
           </Modal>
         ) : null}
