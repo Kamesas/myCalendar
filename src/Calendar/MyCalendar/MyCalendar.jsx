@@ -151,6 +151,7 @@ class MyCalendar extends Component {
           divRef={this.dayDivRef}
           widthDay={this.state.widthDay}
           deleteNote={this.deleteNote}
+          newNote={this.newNote}
         />
       );
 
@@ -179,7 +180,6 @@ class MyCalendar extends Component {
               selectedDay={this.state.selectedDay}
               newNote={this.newNote}
               closeModal={this.closeModal}
-              //timeNow={this.state.moment.clone().format("HH : mm")}
               timeNow={this.timeNow}
               dateNow={this.state.moment.clone().format("DD MM YYYY")}
             />

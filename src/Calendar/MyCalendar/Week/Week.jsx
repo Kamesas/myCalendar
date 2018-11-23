@@ -27,6 +27,7 @@ const Week = props => {
           divRef={props.divRef}
           widthDay={props.widthDay}
           deleteNote={props.deleteNote}
+          newNote={props.newNote}
         />
       ))}
     </div>

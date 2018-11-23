@@ -67,6 +67,7 @@ class AddNote extends Component {
       title: this.state.title,
       descr: this.state.descr
     };
+
     this.props.newNote(newNote);
     this.props.closeModal();
   };
