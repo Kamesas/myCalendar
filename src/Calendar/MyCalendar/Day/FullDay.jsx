@@ -6,6 +6,8 @@ class FullDay extends Component {
     edit: false,
     title: "",
     descr: "",
+    date: "",
+    time: "",
     idNote: ""
   };
 
@@ -14,6 +16,8 @@ class FullDay extends Component {
       edit: true,
       title: note.title,
       descr: note.descr,
+      date: note.date,
+      time: note.time,
       idNote: note.id
     });
   };
@@ -38,17 +42,17 @@ class FullDay extends Component {
         <div style={{ textAlign: "center", fontSize: 20, marginBottom: 15 }}>
           Заметка за {this.props.momentForDay} число
         </div>
-
         {this.state.edit ? (
           <EditNote
             title={this.state.title}
             descr={this.state.descr}
+            time={this.state.time}
+            date={this.state.date}
             momentForDay={this.props.momentForDay}
             newNote={this.props.newNote}
             closeEdit={this.closeEdit}
           />
         ) : null}
-
         {this.props.notes.map((note, i) =>
           note.date === this.props.momentForDay ? (
             <div key={new Date() + note.title + i} className="li-tasks">
@@ -59,7 +63,7 @@ class FullDay extends Component {
                     className="fa fa-edit"
                     onClick={() => this.editNote(note)}
                   />
-                  <i className="fa fa-plus-square" />
+                  {/* <i className="fa fa-plus-square" /> */}
                   <i
                     onClick={() => this.props.deleteNote(note.id)}
                     className="fa fa-trash"
