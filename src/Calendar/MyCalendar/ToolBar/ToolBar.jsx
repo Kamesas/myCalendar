@@ -3,8 +3,49 @@ import React, { Component } from "react";
 import "./ToolBar.css";
 
 class ToolBar extends Component {
+  state = {
+    notes: "",
+    showNotes: false
+  };
+
   search = e => {
     this.props.getSearchEl(e.target.value);
+
+    if (e.target.value !== "") {
+      this.setState({ showNotes: true });
+    } else {
+      this.setState({ showNotes: false });
+    }
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.notes !== this.props.notes) {
+      this.setState({ notes: this.props.notes });
+    }
+  }
+
+  clickOnFoundedNote = note => {
+    console.log(note);
+    //this.setState({ showNotes: false });
+  };
+
+  onFocusOut = e => {
+    this.setState({ showNotes: false });
+
+    e.target.value = "";
+    this.props.getSearchEl("");
+  };
+
+  show = () => {
+    return this.state.notes !== ""
+      ? this.state.notes.map(note => (
+          <li key={note.id} onClick={() => this.clickOnFoundedNote(note.title)}>
+            <div>{note.date}</div>
+            {note.title}
+            <div>{note.descr}</div>
+          </li>
+        ))
+      : null;
   };
 
   render() {
@@ -26,13 +67,16 @@ class ToolBar extends Component {
           <button onClick={this.props.addNote}>Add</button>
           <button onClick={this.props.refreshCalendar}>Refresh</button>
         </div>
-        <div className="search">
+        <div className="search" onBlur={this.onFocusOut}>
           <i className="fa fa-search" />
           <input
             type="text"
-            placeholder="Событие, дата или участник"
+            placeholder="Событие или дата"
             onChange={this.search}
           />
+          <ul className="finded-notes">
+            {this.state.showNotes ? this.show() : null}
+          </ul>
         </div>
         <hr />
       </div>

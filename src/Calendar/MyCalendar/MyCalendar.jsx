@@ -35,7 +35,10 @@ class MyCalendar extends Component {
     }
 
     return notes.filter(el => {
-      return el.title.indexOf(this.state.finded) > -1;
+      return (
+        el.title.toLowerCase().indexOf(this.state.finded.toLowerCase()) > -1 ||
+        el.date.toLowerCase().indexOf(this.state.finded.toLowerCase()) > -1
+      );
     });
   }
 
@@ -192,6 +195,7 @@ class MyCalendar extends Component {
           refreshCalendar={this.refreshCalendar}
           addNote={this.addNote}
           getSearchEl={this.getSearchEl}
+          notes={this.search(this.state.notes)}
         />
 
         {calendar}
