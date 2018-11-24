@@ -5,6 +5,7 @@ class FullDay extends Component {
   state = {
     edit: false,
     title: "",
+    descr: "",
     idNote: ""
   };
 
@@ -12,6 +13,7 @@ class FullDay extends Component {
     this.setState({
       edit: true,
       title: note.title,
+      descr: note.descr,
       idNote: note.id
     });
   };
@@ -40,6 +42,7 @@ class FullDay extends Component {
         {this.state.edit ? (
           <EditNote
             title={this.state.title}
+            descr={this.state.descr}
             momentForDay={this.props.momentForDay}
             newNote={this.props.newNote}
             closeEdit={this.closeEdit}
