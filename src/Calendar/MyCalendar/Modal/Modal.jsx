@@ -3,7 +3,7 @@ import "./Modal.css";
 
 const Modal = ({ closeModal, children }) => {
   return (
-    <div>
+    <div className="modal-component">
       <div className="modal-overaly" onClick={closeModal} />
       <div className="modal">
         <span className="close" onClick={closeModal}>

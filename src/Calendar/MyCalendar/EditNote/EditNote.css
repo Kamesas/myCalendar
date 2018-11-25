@@ -1,0 +1,23 @@
+.edit-note {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-note input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.edit-date-time {
+  display: flex;
+}
+
+.btns-save-cancel {
+  display: flex;
+}
+
+.btns-save-cancel button {
+  width: 100%;
+  margin: 5px 0;
+  cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InputMask from "react-input-mask";
+import "./EditNote.css";
 
 class EditNote extends Component {
   state = {
@@ -33,6 +34,10 @@ class EditNote extends Component {
     this.props.closeEdit();
   };
 
+  cancelEditedNote = () => {
+    this.props.closeEdit();
+  };
+
   componentDidUpdate(prevProps, prevState) {
     if (
       prevProps.title !== this.props.title ||
@@ -52,25 +57,30 @@ class EditNote extends Component {
   render() {
     return (
       <div className="edit-note">
-        <InputMask
-          mask="99 99 9999"
-          maskChar={null}
-          name="date"
-          value={this.state.date}
-          onChange={this.handleInputChange}
-        />
-        <InputMask
-          mask="99 : 99"
-          maskChar={null}
-          name="time"
-          value={this.state.time !== undefined ? this.state.time : ""}
-          onChange={this.handleInputChange}
-        />
+        <div className="edit-date-time">
+          <InputMask
+            mask="99 99 9999"
+            maskChar={null}
+            name="date"
+            placeholder="дата"
+            value={this.state.date}
+            onChange={this.handleInputChange}
+          />
+          <InputMask
+            mask="99 : 99"
+            maskChar={null}
+            name="time"
+            placeholder="время"
+            value={this.state.time !== undefined ? this.state.time : ""}
+            onChange={this.handleInputChange}
+          />
+        </div>
 
         <input
           type="text"
           name="title"
           value={this.state.title}
+          placeholder="название заметки"
           onChange={this.handleInputChange}
         />
 
@@ -81,7 +91,10 @@ class EditNote extends Component {
           onChange={this.handleInputChange}
           placeholder="описание заметки"
         />
-        <button onClick={this.saveEditedNote}>Save</button>
+        <div className="btns-save-cancel">
+          <button onClick={this.saveEditedNote}>Сохранить</button>
+          <button onClick={this.cancelEditedNote}>Отмена</button>
+        </div>
       </div>
     );
   }

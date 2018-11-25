@@ -21,9 +21,20 @@
   padding: 1px 4px;
 }
 
-/* .search {
-  background-color: red;
-} */
+.toolbar .search {
+  position: relative;
+}
+
+.toolbar .finded-notes {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  font-size: 12px;
+}
+
+.toolbar .finded-notes li {
+  cursor: pointer;
+}
 
 .monthArrow {
   margin: 0 5px;
@@ -51,4 +62,52 @@
 .search i {
   color: #aaa;
   margin: 0 5px;
+}
+
+.full-day-today {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.full-day-today span {
+  font-weight: bold;
+}
+
+.full-day .note-title {
+  display: flex;
+  align-items: center;
+}
+
+.note-title .titleName {
+  flex-grow: 1;
+}
+
+.note-title .titleTime {
+  margin-right: 10px;
+  font-style: 12px;
+}
+
+.note-title .fa {
+  padding: 0 2px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.note-title .fa.fa-edit {
+  color: green;
+}
+
+.note-title .fa.fa-trash {
+  color: red;
+}
+
+.li-tasks p {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.li-tasks {
+  border-bottom: 1px solid rgb(199, 192, 192);
 }

@@ -29,11 +29,14 @@ class ToolBar extends Component {
     //this.setState({ showNotes: false });
   };
 
-  onFocusOut = e => {
+  onFocusOut = () => {
     this.setState({ showNotes: false });
 
-    e.target.value = "";
     this.props.getSearchEl("");
+  };
+
+  onFocusOutForValueZero = e => {
+    e.target.value = "";
   };
 
   show = () => {
@@ -64,10 +67,14 @@ class ToolBar extends Component {
           <div className="toolbar-month">{this.props.month}</div>
         </div>
         <div className="btns-add-refresh">
-          <button onClick={this.props.addNote}>Add</button>
-          <button onClick={this.props.refreshCalendar}>Refresh</button>
+          <button onClick={this.props.addNote}>Добавить</button>
+          <button onClick={this.props.refreshCalendar}>Обновить</button>
         </div>
-        <div className="search" onBlur={this.onFocusOut}>
+        <div
+          className="search"
+          onBlur={this.onFocusOutForValueZero}
+          onMouseLeave={this.onFocusOut}
+        >
           <i className="fa fa-search" />
           <input
             type="text"

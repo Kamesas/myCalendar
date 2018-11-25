@@ -11,6 +11,10 @@ class FullDay extends Component {
     idNote: ""
   };
 
+  addNote = () => {
+    alert("добавлениев разработке");
+  };
+
   editNote = note => {
     this.setState({
       edit: true,
@@ -39,8 +43,11 @@ class FullDay extends Component {
   render() {
     return (
       <div className="full-day">
-        <div style={{ textAlign: "center", fontSize: 20, marginBottom: 15 }}>
-          Заметка за {this.props.momentForDay} число
+        <div className="full-day-today">
+          Заметка за <span>{this.props.momentForDay}</span> число
+          {/* <div onClick={this.addNote}>
+            ADD <i className="fa fa-plus-square" />
+          </div> */}
         </div>
         {this.state.edit ? (
           <EditNote
@@ -57,21 +64,17 @@ class FullDay extends Component {
           note.date === this.props.momentForDay ? (
             <div key={new Date() + note.title + i} className="li-tasks">
               <li className="note-title">
-                <span>{note.time}</span> {note.title}
-                <div style={{ float: "right", fontSize: 16 }}>
-                  <i
-                    className="fa fa-edit"
-                    onClick={() => this.editNote(note)}
-                  />
-                  {/* <i className="fa fa-plus-square" /> */}
-                  <i
-                    onClick={() => this.props.deleteNote(note.id)}
-                    className="fa fa-trash"
-                  />
-                </div>
+                {note.time ? (
+                  <span className="titleTime">{note.time}</span>
+                ) : null}
+                <span className="titleName">{note.title}</span>
+                <i className="fa fa-edit" onClick={() => this.editNote(note)} />
+                <i
+                  onClick={() => this.props.deleteNote(note.id)}
+                  className="fa fa-trash"
+                />
               </li>
               <p>{note.descr}</p>
-              <hr />
             </div>
           ) : null
         )}
