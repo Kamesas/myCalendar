@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import "./Calendar.css";
+import styles from "./Calendar.module.sass";
 
 class Calendar extends Component {
   state = {};
   render() {
-    return <div>Calendar</div>;
+    return (
+      <div className={styles["calendar"]}>
+        <h1 className={styles["h1"]}>Calendar</h1>
+      </div>
+    );
   }
 }
 
