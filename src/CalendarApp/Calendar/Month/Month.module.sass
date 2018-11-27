@@ -1,0 +1,19 @@
+.month
+  display: flex
+  flex-wrap: wrap  
+  width: 100%
+  box-sizing: border-box 
+  border-left: 4px solid #eee
+  > div
+    display: block    
+    border-bottom: 1px solid #eee
+    border-right: 1px solid #eee    
+    width: calc(100% / 7)    
+    &:nth-child(-n+7)
+      border-top: 1px solid #eee
+    &:nth-last-child(-n + 7)
+      border-bottom: none
+    &:nth-child(7n)
+      border-right: none
+
+    

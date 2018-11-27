@@ -1,5 +1,5 @@
 import notes from "../../CalendarApp/dbNote";
 
-export default function getMomentJS(state = notes, action) {
+export default function getNotes(state = notes, action) {
   return state;
 }

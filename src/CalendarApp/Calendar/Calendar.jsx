@@ -1,21 +1,34 @@
 import React, { Component } from "react";
 import styles from "./Calendar.module.sass";
 import { connect } from "react-redux";
+import Month from "./Month/Month";
 
 class Calendar extends Component {
   state = {};
+
+  renderNotes() {
+    return (
+      <ul>
+        {this.props.notes.map(note => (
+          <li key={note.id}>{note.title}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
-    console.log(this.props.notes);
     return (
       <div className={styles["calendar"]}>
-        <h1 className={styles["h1"]}>Calendar</h1>
+        <Month />
+        {this.renderNotes()}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  notes: state.getNotes
+  notes: state.getNotes,
+  moment: state.getMomentJS
 });
 
 export default connect(mapStateToProps)(Calendar);
