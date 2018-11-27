@@ -17,6 +17,13 @@ function ChangeMoment(WrapComponent) {
       });
     };
 
+    componentDidUpdate(prevProps, prevState) {
+      console.log(this.state.moment);
+      if (prevState.moment !== this.state.moment) {
+        console.log(1);
+      }
+    }
+
     render() {
       return (
         <WrapComponent
@@ -29,15 +36,5 @@ function ChangeMoment(WrapComponent) {
     }
   };
 }
-
-// const ChangeMoment = (props = {}, WrapComponent) => {
-//   class EnhancedComponent extends Component {
-//     render() {
-//       return <WrapComponent {...props} {...this.props} />;
-//     }
-//   }
-
-//   return EnhancedComponent;
-// };
 
 export default ChangeMoment;

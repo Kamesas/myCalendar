@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import Day from "../Day/Day";
 
 class Month extends Component {
-  state = { moment: this.props.moment };
-
   renderMonth(m) {
     const mondayOfNowWeek = m
       .clone()
@@ -35,8 +33,10 @@ class Month extends Component {
 
   render() {
     return (
-      <div style={{ height: this.state.widthDay }} className={stl["month"]}>
-        {this.renderMonth(this.state.moment)}
+      <div>
+        <div className={stl["month"]}>
+          {this.renderMonth(this.props.moment)}
+        </div>
       </div>
     );
   }
@@ -47,7 +47,7 @@ const mapStateToProps = state => ({
 });
 
 // const mapDispatchToProps = dispatch => ({
-//   addNote: note => dispatch(addNote(note))
+//   nextMonth: note => dispatch(addNote(note))
 // });
 
 export default connect(

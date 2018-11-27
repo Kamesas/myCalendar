@@ -9,13 +9,9 @@ class App extends Component {
     return (
       <div className="container-fluid">
         <div className={styles["app"]}>
-          <header>
-            <Toolbar />
-          </header>
-          <main>
-            <Calendar />
-          </main>
-          <footer>{this.props.moment.format("DD MM YYYY")}</footer>
+          <Toolbar />
+
+          <Calendar />
         </div>
       </div>
     );

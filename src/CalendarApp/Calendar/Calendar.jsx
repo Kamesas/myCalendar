@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import Month from "./Month/Month";
 
 class Calendar extends Component {
-  state = {};
-
   renderNotes() {
     return (
       <ul>
