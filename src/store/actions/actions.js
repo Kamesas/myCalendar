@@ -6,7 +6,12 @@ export const prevMonth = () => ({
   type: "PREV_MONTH"
 });
 
+export const refreshMoment = () => ({
+  type: "REFRESH_MOMENT"
+});
+
 export const addNum = () => ({
   type: "ADD_NUM"
-  //payload: 1
 });
+
+export const addNote = note => ({ type: "ADD_NOTE", payload: note });

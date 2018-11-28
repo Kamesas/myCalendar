@@ -27,7 +27,7 @@ class Month extends Component {
     );
 
     return week.map(day => (
-      <Day key={day.format("DD MM YYYY")} date={day.date()} />
+      <Day key={day.format("DD MM YYYY")} day={day} date={day.date()} />
     ));
   }
 
@@ -43,7 +43,8 @@ class Month extends Component {
 }
 
 const mapStateToProps = state => ({
-  moment: state.getMomentJS
+  moment: state.getMomentJS,
+  notes: state.getNotes
 });
 
 // const mapDispatchToProps = dispatch => ({

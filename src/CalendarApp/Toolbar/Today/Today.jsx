@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import stl from "./Today.module.sass";
 import { connect } from "react-redux";
-import { nextMonth, prevMonth, addNum } from "../../../store/actions/actions";
+import { nextMonth, prevMonth } from "../../../store/actions/actions";
 
 class Today extends React.Component {
   render() {

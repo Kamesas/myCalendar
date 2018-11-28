@@ -1,26 +1,32 @@
 import React, { Component } from "react";
 import stl from "./Toolbar.module.sass";
-import { Row, Col } from "reactstrap";
-import { Badge } from "reactstrap";
+import { Row, Col, Badge } from "reactstrap";
 import Today from "./Today/Today";
+import RefreshMoment from "./RefreshMoment/RefreshMoment";
+import AddNoteBtn from "./AddNoteBtn/AddNoteBtn";
 
 class Toolbar extends Component {
-  state = {};
+  //state = {};
   render() {
     return (
       <Row>
-        <Col md={4}>
-          <div className={stl["toolbar"]}>
+        <div className={stl["toolbar"]}>
+          <Col md={4}>
             <div className={stl["left"]}>
               <Badge className={stl["badge"]} color="secondary">
                 Сегодня
               </Badge>
               <Today />
             </div>
-          </div>
-        </Col>
+          </Col>
 
-        <Col md={8}>Rigth</Col>
+          <Col md={8}>
+            <div className={stl["rigth"]}>
+              <AddNoteBtn />
+              <RefreshMoment />
+            </div>
+          </Col>
+        </div>
       </Row>
     );
   }
