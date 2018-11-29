@@ -1,21 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addNote } from "../../store/actions/actions";
-import { Col, Row, Button, Form, FormGroup, Input } from "reactstrap";
+import { Col, Row, Button, FormGroup, Input } from "reactstrap";
 
 class AddNoteForm extends Component {
   state = {
-    date: "",
+    date: this.props.moment.format("YYYY-MM-DD"),
     time: "",
     title: "",
     descr: "",
-    color: ""
+    color: "blue"
   };
 
   handleInputChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(event.target.value);
-    console.log(this.state.color);
   };
 
   saveNewNote = e => {
@@ -29,21 +27,32 @@ class AddNoteForm extends Component {
       color: this.state.color
     };
 
-    this.props.addNote(newNote);
-    console.log(newNote);
+    if (this.state.title === "") {
+      alert("Напишите заголовок заметки");
+    } else {
+      this.props.addNote(newNote);
+      alert("Сохранено");
+      this.resetAddForm();
+    }
+  };
+
+  resetAddForm = () => {
+    this.setState({
+      title: "",
+      descr: "",
+      time: ""
+    });
   };
 
   render() {
-    console.log(this.props.getNotes);
     return (
-      <Form>
-        <Row form>
+      <div>
+        <Row>
           <Col md={4}>
             <FormGroup>
               <Input
                 type="date"
                 name="date"
-                id="exampleDate"
                 placeholder="date placeholder"
                 value={this.state.date}
                 onChange={this.handleInputChange}
@@ -55,8 +64,8 @@ class AddNoteForm extends Component {
               <Input
                 type="time"
                 name="time"
-                id="exampleTime"
                 placeholder="time placeholder"
+                value={this.state.time}
                 onChange={this.handleInputChange}
               />
             </FormGroup>
@@ -66,65 +75,57 @@ class AddNoteForm extends Component {
               <Input
                 type="select"
                 name="color"
-                id="exampleSelect"
                 value={this.state.color}
                 onChange={this.handleInputChange}
               >
-                <option>blue</option>
-                <option>red</option>
-                <option>black</option>
-                <option>green</option>
-                <option>gold</option>
+                <option>синий</option>
+                <option>белый</option>
+                <option>зеленый</option>
+                <option>красный</option>
+                <option>черный</option>
               </Input>
             </FormGroup>
           </Col>
         </Row>
-        <Row form>
-          <Col md={12}>
-            <FormGroup>
-              <Input
-                type="text"
-                name="title"
-                id="exampleText"
-                placeholder="Title"
-                onChange={this.handleInputChange}
-              />
-            </FormGroup>
-          </Col>
-          <Col md={12}>
-            <FormGroup>
-              <Input
-                type="textarea"
-                name="descr"
-                id="exampleText"
-                onChange={this.handleInputChange}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
 
-        <Row form>
-          <Col md={6}>
-            <Button onClick={this.saveNewNote} color="primary" size="lg" block>
-              Сохранить
-            </Button>
-          </Col>
-          <Col md={6}>
-            <Button color="warning" size="lg" block>
-              Отменить
-            </Button>
-          </Col>
-        </Row>
-      </Form>
+        <FormGroup>
+          <Input
+            invalid
+            type="text"
+            name="title"
+            placeholder="заголовок заметки"
+            value={this.state.title}
+            onChange={this.handleInputChange}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Input
+            type="textarea"
+            name="descr"
+            placeholder="описание заметки"
+            value={this.state.descr}
+            onChange={this.handleInputChange}
+          />
+        </FormGroup>
+
+        <Button onClick={this.saveNewNote} color="primary" size="lg" block>
+          Сохранить
+        </Button>
+      </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  moment: state.getMomentJS
+});
 
 const mapDispatchToProps = dispatch => ({
   addNote: note => dispatch(addNote(note))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AddNoteForm);

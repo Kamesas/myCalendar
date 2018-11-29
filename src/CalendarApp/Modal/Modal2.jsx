@@ -1,6 +1,7 @@
 import React from "react";
 import "./Modal.css";
 import { Button, Modal } from "react-bootstrap";
+import AddNoteForm from "../AddNoteForm/AddNoteForm";
 
 class ModalWindow extends React.Component {
   constructor(props, context) {
@@ -27,7 +28,7 @@ class ModalWindow extends React.Component {
       <div>
         {
           <Button bsStyle="primary" onClick={this.handleShow}>
-            Добавить
+            Добавить2
           </Button>
         }
 
@@ -36,16 +37,20 @@ class ModalWindow extends React.Component {
             <Modal.Title>Добавьте новую запись</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {this.props.children}
-            {/*  <Button
+            <AddNoteForm />
+            <Button
               bsStyle="warning"
               bsSize="large"
-              block
-              onClick={this.handleClose}
+              onClick={
+                this.handleClose //block
+              }
             >
               Отменить
-            </Button> */}
+            </Button>
           </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.handleClose}>Close</Button>
+          </Modal.Footer>
         </Modal>
       </div>
     );

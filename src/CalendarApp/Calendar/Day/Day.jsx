@@ -23,8 +23,6 @@ class Day extends Component {
   };
 
   render() {
-    const { day } = this.props;
-
     return (
       <div
         //className={day.format("DD MM YYYY") === sunday ? "red" : "black"}
