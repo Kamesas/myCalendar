@@ -26,8 +26,12 @@ class Month extends Component {
       week[week.length - 1].format("DD MM YYYY") !== lastDayOfWeekInNowMonth
     );
 
-    return week.map(day => (
-      <Day key={day.format("DD MM YYYY")} day={day} date={day.date()} />
+    return week.map((day, i) => (
+      <Day
+        key={day.format("DD MM YYYY")}
+        day={day}
+        firstWeek={i < 7 ? true : false}
+      />
     ));
   }
 
