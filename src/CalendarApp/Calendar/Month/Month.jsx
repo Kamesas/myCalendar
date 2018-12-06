@@ -30,6 +30,7 @@ class Month extends Component {
       <Day
         key={day.format("DD MM YYYY")}
         day={day}
+        notes={this.props.notes}
         firstWeek={i < 7 ? true : false}
       />
     ));

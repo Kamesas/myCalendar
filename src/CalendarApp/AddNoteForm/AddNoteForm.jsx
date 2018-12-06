@@ -1,15 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addNote } from "../../store/actions/actions";
+import { addNote, updateNote } from "../../store/actions/actions";
 import { Col, Row, Button, FormGroup, Input } from "reactstrap";
 
 class AddNoteForm extends Component {
+  static defaultProps = {
+    editNote: ""
+  };
+
   state = {
-    date: this.props.moment.format("YYYY-MM-DD"),
-    time: "",
-    title: "",
-    descr: "",
-    color: "blue"
+    date:
+      this.props.editNote !== ""
+        ? this.props.editNote.date
+        : this.props.moment.format("YYYY-MM-DD"),
+    time:
+      this.props.editNote !== ""
+        ? this.props.editNote.time
+          ? this.props.editNote.time
+          : ""
+        : "",
+    title: this.props.editNote !== "" ? this.props.editNote.title : "",
+    descr:
+      this.props.editNote !== ""
+        ? this.props.editNote.descr
+          ? this.props.editNote.descr
+          : ""
+        : "",
+    color: this.props.editNote !== "" ? this.props.editNote.color : "blue",
+    update: this.props.editNote !== "" ? this.props.editNote.update : false
   };
 
   handleInputChange = event => {
@@ -33,6 +51,28 @@ class AddNoteForm extends Component {
       this.props.addNote(newNote);
       alert("Сохранено");
       this.resetAddForm();
+    }
+  };
+
+  updateNote = e => {
+    e.preventDefault();
+    const id = this.props.editNote.id;
+    const newNote = {
+      date: this.state.date,
+      time: this.state.time,
+      title: this.state.title,
+      descr: this.state.descr,
+      color: this.state.color
+    };
+
+    if (this.state.title === "") {
+      alert("Напишите заголовок заметки");
+    } else {
+      this.props.updateNote(id, newNote);
+      alert("Обновлено");
+      this.props.closeEdit();
+      //console.log(id, newNote);
+      //this.resetAddForm();
     }
   };
 
@@ -109,9 +149,15 @@ class AddNoteForm extends Component {
           />
         </FormGroup>
 
-        <Button onClick={this.saveNewNote} color="primary" size="lg" block>
-          Сохранить
-        </Button>
+        {this.state.update ? (
+          <Button onClick={this.updateNote} color="success" size="lg" block>
+            Перезаписать
+          </Button>
+        ) : (
+          <Button onClick={this.saveNewNote} color="primary" size="lg" block>
+            Сохранить
+          </Button>
+        )}
       </div>
     );
   }
@@ -122,7 +168,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addNote: note => dispatch(addNote(note))
+  addNote: note => dispatch(addNote(note)),
+  updateNote: (id, note) => dispatch(updateNote(id, note))
 });
 
 export default connect(
